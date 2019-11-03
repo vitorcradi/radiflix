@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.radiflix.model.FilmDTO;
+import br.com.radiflix.model.MovieDTO;
 import br.com.radiflix.service.FavoriteService;
 
 @RestController
@@ -21,13 +21,13 @@ public class FavoriteController {
 
 	@ResponseBody
 	@RequestMapping(value = "/favoritos", method = GET)
-	public List<FilmDTO> findAllMovies() throws ConstraintViolationException {
+	public List<MovieDTO> findAllMovies() throws ConstraintViolationException {
 		return favoritosService.getfavoritos();
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/favorito", method = POST)
-	public List<FilmDTO> inputFavorito() throws ConstraintViolationException {
+	public List<MovieDTO> inputFavorito() throws ConstraintViolationException {
 		return favoritosService.inputFavorito();
 	}
 }

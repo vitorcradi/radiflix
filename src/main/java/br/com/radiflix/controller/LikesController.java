@@ -15,15 +15,15 @@ import br.com.radiflix.model.LikeDTO;
 import br.com.radiflix.service.LikeService;
 
 @RestController
-public class LikeController {
+public class LikesController {
 	
 	@Autowired
-	private LikeService movieService;
+	private LikeService likeService;
 
 	@ResponseBody
 	@RequestMapping(value = "/like", method = POST)
-	public void inputLike(@RequestBody List<LikeDTO> movie) throws ConstraintViolationException {
-		movieService.inputLike(movie);
+	public void inputLike(@RequestBody List<LikeDTO> like) throws ConstraintViolationException {
+		likeService.inputLike(like);
 	}
 
 }

@@ -2,10 +2,10 @@ package br.com.radiflix.service;
 
 import java.util.List;
 
-import br.com.radiflix.model.FilmDTO;
+import br.com.radiflix.model.MovieDTO;
 
 public interface ClientService {
 
-	List<FilmDTO> getClientes();
+	List<MovieDTO> getClientes();
 
 }

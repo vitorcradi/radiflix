@@ -10,8 +10,8 @@ public class LikeDTO {
 	@JsonProperty("client_id")
 	public String clientId;
 	
-	@JsonProperty("film_id")
-	public String filmId;
+	@JsonProperty("movie_id")
+	public String movieId;
 
 	public String getClientId() {
 		return clientId;
@@ -21,11 +21,11 @@ public class LikeDTO {
 		this.clientId = clientId;
 	}
 
-	public String getFilmId() {
-		return filmId;
+	public String getMovieId() {
+		return movieId;
 	}
 
-	public void setFilmId(String filmId) {
-		this.filmId = filmId;
+	public void setMovieId(String filmId) {
+		this.movieId = filmId;
 	}
 }

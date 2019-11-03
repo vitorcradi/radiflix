@@ -7,17 +7,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
-
 @SpringBootApplication
 @ComponentScan({ 
-	"com.itau.latam.config", 
-	"com.itau.latam.msghandler.controller", 
-	"com.itau.latam.msghandler.service"
+	"br.com.radiflix.controller", 
+	"br.com.radiflix.service" 
 })
-public class MediaHubApplication {
+public class RadiflixApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MediaHubApplication.class, args);
+		SpringApplication.run(RadiflixApplication.class, args);
 	}
 
 	@Bean

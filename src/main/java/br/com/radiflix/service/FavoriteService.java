@@ -2,12 +2,12 @@ package br.com.radiflix.service;
 
 import java.util.List;
 
-import br.com.radiflix.model.FilmDTO;
+import br.com.radiflix.model.MovieDTO;
 
 public interface FavoriteService {
 
-	List<FilmDTO> getfavoritos();
+	List<MovieDTO> getfavoritos();
 
-	List<FilmDTO> inputFavorito();
+	List<MovieDTO> inputFavorito();
 
 }
