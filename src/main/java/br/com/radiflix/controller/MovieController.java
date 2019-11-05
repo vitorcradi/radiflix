@@ -24,7 +24,11 @@ public class MovieController {
 
     @ResponseBody
     @RequestMapping(value = "/movies", method = GET)
-    public List<MovieDTO> findMovies( @RequestParam(required = false) String genre, @RequestParam(required = false) String keyword) throws ConstraintViolationException {
+    public List<MovieDTO> findMovies(
+        @RequestParam(required = false) String genre,
+        @RequestParam(required = false) String keyword, 
+        @RequestParam(required = false) Boolean watched
+    ) throws ConstraintViolationException {
         return movieService.findMovies(genre, keyword);
     }
 
@@ -33,18 +37,23 @@ public class MovieController {
     public List<MovieDTO> findPopularMoviesByGenre(@PathVariable final Integer id) throws ConstraintViolationException {
         return movieService.findPopularMoviesByCategory(id);
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/movies/watched", method = GET)
+    public List<MovieDTO> findWatchedMovies() throws ConstraintViolationException {
+        return movieService.findWatchedMovies();
+    }
+
     @ResponseBody
     @RequestMapping(value = "/movie/{id}", method = GET)
     public MovieDTO findMovie(@PathVariable final Integer id) throws ConstraintViolationException {
         return movieService.findMovieBy(id);
     }
-    
+
     @ResponseBody
     @RequestMapping(value = "/movie/{id}", method = PUT)
     public void updateMovie(@RequestBody MovieDTO movie, @PathVariable final Integer id) throws ConstraintViolationException {
         movieService.updateMovie(id, movie);
     }
-    
-    
 
 }

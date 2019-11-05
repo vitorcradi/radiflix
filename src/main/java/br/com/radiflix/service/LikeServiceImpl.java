@@ -2,6 +2,7 @@ package br.com.radiflix.service;
 
 import java.util.List;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class LikeServiceImpl implements LikeService {
     private LikeRepository likeRepository;
 
     @Override
-    public void inputLike(List<LikeDTO> likes) {
+    public void inputLike(List<LikeDTO> likes) throws ConstraintViolationException {
         
         LikeEntity entity = null;
         for (LikeDTO like : likes) {

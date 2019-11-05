@@ -18,6 +18,6 @@ CREATE TABLE `likes` (
 CREATE TABLE `issues` (
 	id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	creation_date TIMESTAMP,
-	reason VARCHAR,
-	description VARCHAR
+	reason VARCHAR(150),
+	description VARCHAR(255)
 );

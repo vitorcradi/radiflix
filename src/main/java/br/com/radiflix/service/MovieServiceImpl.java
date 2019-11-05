@@ -3,6 +3,7 @@ package br.com.radiflix.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class MovieServiceImpl implements MovieService {
     public MovieRepository movieRepository;
 
     @Override
-    public List<MovieDTO> findMovies(String genre, String keyword) {
+    public List<MovieDTO> findMovies(String genre, String keyword) throws ConstraintViolationException {
         List<MovieEntity> moviesEntity = null;
         
         if((keyword != null && !keyword.isEmpty()) && (genre != null && !genre.isEmpty())) {
@@ -34,27 +35,34 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<MovieDTO> findPopularMoviesByCategory(Integer genreId) {
+    public List<MovieDTO> findWatchedMovies() throws ConstraintViolationException {
+        List<MovieEntity> moviesEntity = movieRepository.findByWatched();
+        return formatMovieEntityListToDTOList(moviesEntity);
+    }
+    
+    @Override
+    public List<MovieDTO> findPopularMoviesByCategory(Integer genreId) throws ConstraintViolationException {
         List<MovieEntity> moviesEntity = movieRepository.findByGenreId(genreId);
         return formatMovieEntityListToDTOList(moviesEntity);
     }
     
     
     @Override
-    public MovieDTO findMovieBy(Integer id) {
+    public MovieDTO findMovieBy(Integer id) throws ConstraintViolationException {
         MovieEntity moviesEntity = this.movieRepository.findById(id).orElse(new MovieEntity());
         MovieDTO dto = formatMovieEntityToDTO(moviesEntity);
         return dto;
     }
     
     @Override
-    public void updateMovie(Integer id, MovieDTO movie) {
+    public void updateMovie(Integer id, MovieDTO movie) throws ConstraintViolationException {
         MovieEntity entity = movieRepository.findById(id).orElse(new MovieEntity());
         entity.setDetail(movie.getDetail());
         entity.setGenre(movie.getGenre());
         entity.setName(movie.getName());
         entity.setToWatch(movie.isToWatch());
         entity.setGenreId(movie.getGenreId());
+        entity.setWatched(movie.getWatched());
         
         movieRepository.save(entity);
     }
@@ -80,6 +88,7 @@ public class MovieServiceImpl implements MovieService {
             dto.setName(entity.getName());
             dto.setToWatch(entity.isToWatch());
             dto.setWatched(entity.getWatched());
+            dto.setDetail(entity.getDetail());
             moviesDTO.add(dto);
         }
         return moviesDTO;
