@@ -14,7 +14,6 @@ CREATE TABLE `likes` (
 	liked BINARY
 );
 
-
 CREATE TABLE `issues` (
 	id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	creation_date TIMESTAMP,
