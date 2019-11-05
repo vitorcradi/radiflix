@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.javainuse.service.RabbitMQSender;
+
 import br.com.radiflix.model.LikeDTO;
 import br.com.radiflix.service.LikeService;
 
 @RestController
 public class LikesController {
-	
+    @Autowired
+    RabbitMQSender rabbitMQSender;
 	@Autowired
 	private LikeService likeService;
 
