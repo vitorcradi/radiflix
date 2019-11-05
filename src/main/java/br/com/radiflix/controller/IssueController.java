@@ -2,8 +2,6 @@ package br.com.radiflix.controller;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
-import java.util.List;
-
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,19 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.radiflix.model.LikeDTO;
-import br.com.radiflix.service.LikeService;
+import br.com.radiflix.model.IssueDTO;
+import br.com.radiflix.service.IssueService;
 
 @RestController
-public class LikesController {
-	
+public class IssueController {
 	@Autowired
-	private LikeService likeService;
+	private IssueService issueService;
 
 	@ResponseBody
-	@RequestMapping(value = "/likes", method = POST)
-	public void inputLike(@RequestBody List<LikeDTO> likes) throws ConstraintViolationException {
-		likeService.inputLike(likes);
+	@RequestMapping(value = "/issue", method = POST)
+	public void inputFavorito(@RequestBody IssueDTO issue) throws ConstraintViolationException {
+		issueService.submitIssue(issue);
 	}
-
 }

@@ -4,11 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Table;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "film")
+@Table(name = "movie")
 public class MovieEntity {
 
     @Id
@@ -21,14 +21,17 @@ public class MovieEntity {
     @Column(name = "genre")
     private String genre;
 
+    @Column(name = "genre_id")
+    public int genreId;
+
     @Column(name = "detail")
-    private String details;
+    private String detail;
+
+    @Column(name = "to_watch")
+    private boolean toWatch;
 
     @Column(name = "watched")
-    private Integer watched;
-
-    @Column(name = "likes")
-    private Integer likes;
+    private int watched;
 
     public Integer getId() {
         return id;
@@ -54,27 +57,36 @@ public class MovieEntity {
         this.genre = genre;
     }
 
-    public String getDetails() {
-        return details;
+    public int getGenreId() {
+        return genreId;
     }
 
-    public void setDetails(String details) {
-        this.details = details;
+    public void setGenreId(int genreId) {
+        this.genreId = genreId;
     }
 
-    public Integer getWatched() {
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public boolean isToWatch() {
+        return toWatch;
+    }
+
+    public void setToWatch(boolean toWatch) {
+        this.toWatch = toWatch;
+    }
+
+    public int getWatched() {
         return watched;
     }
 
-    public void setWatched(Integer watched) {
+    public void setWatched(int watched) {
         this.watched = watched;
     }
 
-    public Integer getLikes() {
-        return likes;
-    }
-
-    public void setLikes(Integer likes) {
-        this.likes = likes;
-    }
 }

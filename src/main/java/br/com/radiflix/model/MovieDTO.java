@@ -13,14 +13,21 @@ public class MovieDTO {
     @JsonProperty("genre")
     public String genre;
 
-    @JsonProperty("details")
-    public String details;
+    @JsonInclude(Include.NON_EMPTY)
+    @JsonProperty("genre_id")
+    public int genreId;
 
+    @JsonInclude(Include.NON_NULL)
+    @JsonProperty("detail")
+    public String detail;
+
+    @JsonInclude(Include.NON_NULL)
+    @JsonProperty("to_watch")
+    public boolean toWatch;
+
+    @JsonInclude(Include.NON_NULL)
     @JsonProperty("watched")
-    public Integer watched;
-
-    @JsonProperty("likes")
-    public Integer likes;
+    public int watched;
 
     public String getName() {
         return name;
@@ -38,28 +45,36 @@ public class MovieDTO {
         this.genre = genre;
     }
 
-    public String getDetails() {
-        return details;
+    public int getGenreId() {
+        return genreId;
     }
 
-    public void setDetails(String details) {
-        this.details = details;
+    public void setGenreId(int genreId) {
+        this.genreId = genreId;
     }
 
-    public Integer getWatched() {
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public boolean isToWatch() {
+        return toWatch;
+    }
+
+    public void setToWatch(boolean toWatch) {
+        this.toWatch = toWatch;
+    }
+
+    public int getWatched() {
         return watched;
     }
 
-    public void setWatched(Integer watched) {
+    public void setWatched(int watched) {
         this.watched = watched;
-    }
-
-    public Integer getLikes() {
-        return likes;
-    }
-
-    public void setLikes(Integer likes) {
-        this.likes = likes;
     }
 
 }

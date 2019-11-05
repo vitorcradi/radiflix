@@ -6,26 +6,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(Include.NON_NULL)
 public class LikeDTO {
-	
-	@JsonProperty("client_id")
-	public String clientId;
-	
-	@JsonProperty("movie_id")
-	public String movieId;
 
-	public String getClientId() {
-		return clientId;
-	}
+    @JsonProperty("movie_id")
+    public int movieId;
 
-	public void setClientId(String clientId) {
-		this.clientId = clientId;
-	}
+    @JsonProperty("liked")
+    public boolean liked;
 
-	public String getMovieId() {
-		return movieId;
-	}
+    public int getMovieId() {
+        return movieId;
+    }
 
-	public void setMovieId(String filmId) {
-		this.movieId = filmId;
-	}
+    public void setMovieId(int movieId) {
+        this.movieId = movieId;
+    }
+
+    public boolean isLiked() {
+        return liked;
+    }
+
+    public void setLiked(boolean liked) {
+        this.liked = liked;
+    }
+
+    
 }
