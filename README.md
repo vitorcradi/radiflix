@@ -45,10 +45,13 @@ docker rm -f radiflix-mysql; docker run \
 mysql:5.7
 
 ### Services
-Entrar na pasta do projeto
-docker build -t radiflix .
-docker run -d radiflix mvn clean package
-docker run -d -p 8080:8080 -v target:/artifact radiflix-container
+Entrar na pasta do projeto  
+docker build -t radiflix .  
+docker run -d radiflix mvn clean package  
+docker run -d -p 8080:8080 -v target:/artifact radiflix-container  
 
-### Chamadas pelo Postman
+## Chamadas pelo Postman
 A collection encontra-se na pasta assets
+
+## Diagrama
+![alt text](https://raw.githubusercontent.com/vitorcradi/radiflix/master/Radiflix.png)
