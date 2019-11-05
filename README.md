@@ -33,10 +33,11 @@ solução baseada em Microserviços.
 
 ## Inicialização do sistema
 ### Database
+Entrar na pasta do projeto
 docker rm -f radiflix-mysql; docker run \
   -d \
   --name radiflix-mysql \
-  -v //c//work//itau//areas//ms//work-2//radiflix//assets//db:/docker-entrypoint-initdb.d \
+  -v assets/db:/docker-entrypoint-initdb.d \
   -e MYSQL_USER=user \
   -e MYSQL_PASSWORD=pass \
   -e MYSQL_DATABASE=radiflix-db \
